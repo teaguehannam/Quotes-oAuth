@@ -1,0 +1,27 @@
+<h1>Quotes</h1>
+<div class="row">
+	{{#each quotes}}
+		<div class="col s12 m4">
+			<div class="card">
+				<div class="card-image">
+					{{{editIcon user ../user _id}}}
+				</div>
+				<div class="card-content center-align">
+					<h5>{{author}}</h5>
+					<p>{{truncate body 64}}</p>
+					<br>
+					<div class="chip">
+						<img src="{{user.image}}" alt="User">
+						<a href="/quotes/user/{{user._id}}">{{user.displayName}}</a>
+					</div>
+				</div>
+				<div class="card-action center-align">
+					<a href="/quotes/{{_id}}" class="btn grey">Read More</a>
+				</div>
+			</div>
+		</div>
+	{{else}}
+		<p>No quotes to display</p>
+	{{/each}}
+</div>
+

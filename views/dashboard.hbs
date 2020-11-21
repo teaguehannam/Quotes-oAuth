@@ -1,0 +1,37 @@
+<h3>Welcome {{name}}</h3>
+{{#if quotes}}
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>Quote</th>
+				<th>Author</th>
+				<th>Status</th>
+				<th>Created</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each quotes}}
+				<tr>
+					<td><a href="/quotes/{{_id}}">{{body}}</a></td>
+					<td>{{author}}</td>
+					<td><span class="dash-status">{{status}}</span></td>
+					<td>{{formatDate createdAt 'MM/DD/YYYY'}}</td>
+					<td class="action-buttons">
+						<a href="/quotes/edit/{{_id}}" class="btn btn-float">
+							<i class="fas fa-edit"></i>
+						</a>
+						<form action="/quotes/{{_id}}" method="POST" id="delete-form">
+							<input type="hidden" name="_method" value="DELETE">
+							<button type="submit" class="btn red">
+								<i class="fas fa-trash"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+{{else}}
+	<p>You have not created any quotes</p>
+{{/if}}
